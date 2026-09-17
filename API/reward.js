@@ -1,0 +1,8 @@
+export default function handler(req, res) {
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Methods', 'GET,POST,OPTIONS');
+  if (req.method === 'OPTIONS') return res.status(200).end();
+  
+  const userId = req.query.userId || req.query.user_id || 'unknown';
+  return res.status(200).json({ ok: true, userId });
+}
